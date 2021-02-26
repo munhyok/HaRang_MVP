@@ -59,3 +59,6 @@ https://snack.expo.io/@tom2020/react-native-modal-example modal example
 https://github.com/ilovepku/biao map modal 예제… 중에 제일참고할 만한것
 
 https://toss.im/transfer-web/linkgen/request-apikey TOSS 입금 API beta
+
+https://nolboo.kim/blog/2013/10/06/github-for-beginner/ Gitcmd 사용방법
+
