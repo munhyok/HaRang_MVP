@@ -10,25 +10,23 @@ Language : React Native (Java Script : 100% / Type Script : 0%)
 
 <u>**외부에 유출 시 불이익을 얻을 수 있습니다! 외부 유출을 최대한 조심해주세요!**</u>
 
-Commit 할 때 마다 카카오워크에 알림이 갈 수 있게 수정 완료 :D
-
------------
 
 
+## Update Note
+
+### Github
+
+- Commit 할 때 마다 카카오워크에 알림이 갈 수 있게 수정 완료 :D
 
 
 
-## 개발 현황
+### 개발 현황
 
 - Tab Navigator 구현
 - Google Maps 구현
 - Firebase에서 받아오는 Json 데이터로 Marker Rendering
 - Profile / Wallet Front-End - 일단 초안 완성 추후 추가로 디자인 수정예정
 - Tooltip 눌렀을 때 매장 정보 화면 구현 중...
-
-
-
-
 
 
 
