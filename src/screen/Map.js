@@ -11,6 +11,9 @@ import {Modalize} from 'react-native-modalize';
 import SwipeablePanel from 'react-native-sheets-bottom';
 
 
+import * as firebase from 'firebase';
+import "firebase/database";
+
 import { Dimensions, StyleSheet, Text, View, PermissionsAndroid, Platform, Alert, ActivityIndicator, Image, Button } from 'react-native';
 import react from 'react';
 import { TextInput, TouchableOpacity, TouchableWithoutFeedback } from 'react-native-gesture-handler';
@@ -19,6 +22,9 @@ import {locations} from '../model/markersdata';
 import { version } from 'react';
 import { LocationSubscriber } from 'expo-location/build/LocationSubscribers';
 import {MyModal} from '../module/wraping';
+
+import AsyncImageAnimated from 'react-native-async-image-animated';
+
 
 const windowHeight = Dimensions.get('window').height;
 
@@ -50,7 +56,7 @@ class App extends React.Component {
       },
       company: [],
       price: [],
-
+      data:[],
       currentItem: [],
 
       
@@ -67,6 +73,24 @@ class App extends React.Component {
       this.getLocationAsync()
       //this.index = 1;
 
+      firebase.initializeApp({
+        apiKey: "AIzaSyCeFmNbJoDf9EiTC9AOZlnm7QtYOiq42_A",
+        authDomain: "harang-database.firebaseapp.com",
+        databaseURL: "https://harang-database-default-rtdb.firebaseio.com",
+        projectId: "harang-database",
+        storageBucket: "harang-database.appspot.com",
+        messagingSenderId: "313757664028",
+        appId: "1:313757664028:web:a69be06e647d723ce8f0d9",
+        measurementId: "G-5TEJ0BXZ51"
+      });
+      
+      const ref = firebase.database().ref('markers');
+
+      ref.on("value", snapshot => {
+        this.setState({data: snapshot.val()});
+      });
+
+      if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
 
 
       
@@ -153,7 +177,7 @@ class App extends React.Component {
     }
 
     mapMarkers = (_marker) => {
-      return locations.markers.map((_marker, i) => (
+      return this.state.data.map((_marker, i) => (
   
         
   
@@ -178,7 +202,7 @@ class App extends React.Component {
               companyName: _marker.company,
               priceP: _marker.price,
               foodImage: _marker['img'],
-              backImg: _marker.backImg,
+              backImg: _marker['backImg'],
             })}
             
             >
@@ -194,9 +218,8 @@ class App extends React.Component {
                   <Image style={styles.image}
                     source={{uri: _marker['img'] }}
                   />
-                  <Image style={styles.image} 
-                    source={{uri: _marker['backImg']}}
-                  />
+                  
+                  
 
                   
                 </View>

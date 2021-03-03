@@ -25,11 +25,15 @@ function CoreStackScreen() {
 
       <CoreStack.Navigator screenOptions = {{headerShown: false}}>
 
-        <CoreStack.Screen name = "HaRMaps" component = {Maps} />
+        <CoreStack.Screen name = "HaRMaps" component = {Maps} 
+        
+
+        />
         
         <CoreStack.Screen name="매장정보" component={Detail}
             options = {{
-                headerShown: false,
+                headerShown: false ,
+                
             }}
             />
       </CoreStack.Navigator>

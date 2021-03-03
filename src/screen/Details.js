@@ -1,9 +1,11 @@
 import React, { Component, PureComponent }  from 'react';
-import {SafeAreaView, StyleSheet, Text, View, Platform,Image,Button, ActivityIndicator} from 'react-native';
+import {SafeAreaView, StyleSheet, Text, View, Platform,Image,Button, ActivityIndicator, Animated, Dimensions,ImageBackground} from 'react-native';
 import { setStatusBarBackgroundColor, StatusBar } from 'expo-status-bar';
 import Constants from 'expo-constants';
 import { ScrollView } from 'react-native-gesture-handler';
 import { rgb } from 'd3';
+import AsyncImageAnimated from 'react-native-async-image-animated';
+
 
 
 
@@ -25,20 +27,28 @@ function itemSperate (){
 
 
 
-export default class App extends PureComponent {
+
+
+class App extends PureComponent {
+    
 
     constructor(props) {
         super(props);
         this.state = {
           mapRegion: null,
           imageLoaded: false,
+          foodImage: [],
+
+          animatedValue: null,
 
         };
     
       }
 
 
-      async imageloadingProcess() {
+      
+
+      async imageloadingProcess(uri_image) {
 
         try {
             this.setstate({
@@ -54,7 +64,7 @@ export default class App extends PureComponent {
             return(
                 <View>
                     <Image
-                    source = {{uri: foodImage}}
+                    source = {{uri: uri_image}}
                                 
                 />
                 </View>
@@ -86,18 +96,29 @@ export default class App extends PureComponent {
         const {titleId, companyName, priceP, foodImage,backImg} = route.params;
 
 
+        console.log(backImg);
+        console.log(foodImage);
+
         return(
 
             
             <SafeAreaView style={styles.container}>
                 <ScrollView>
-                    <View style = {{padding: 20, flexDirection: 'row',  justifyContent: 'space-between' }}>
-                        <View>
-                            <Image style={styles.backImg}
+                    <View style = {{flexDirection: 'column',  justifyContent: 'space-between' }}>
+                        <View >
+                            <ImageBackground style={styles.backImg}
                                 source={{uri: backImg}}
-                            />
+                                
+                            >
+                            
+                            
+                            </ImageBackground>
+
+                            <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+                            <Text style ={{fontWeight: 'bold', fontSize: 30, color: '#303030'}}>{companyName}</Text>
+                            </View>
                         </View>
-                        <Text style ={{fontWeight: 'bold', fontSize: 45,color:'#303030', }}>{companyName}</Text>
+                        
 
                     
                     </View>
@@ -112,9 +133,7 @@ export default class App extends PureComponent {
 
                             
                         
-                        <Image style={styles.image}
-                            source={{uri: foodImage }}
-                        />
+                        
                 
 
                         </View>
@@ -127,12 +146,12 @@ export default class App extends PureComponent {
                     {itemSperate()}
 
                     <View style={styles.bankSector}>
-                        <Text style = {{fontSize: 30, fontWeight: '200'}}>연동 계좌</Text>
+                        <Text style = {{fontSize: 30, fontWeight: '200'}}>Menu</Text>
 
                         
                     </View> 
                     <View style={{alignItems: 'center', justifyContent: 'center',paddingTop: 30}}>
-                            <Text>연동 된 계좌가 없습니다!</Text>
+                            <Text>등록된 음식이 없습니다!</Text>
                     </View>
 
                 </ScrollView>
@@ -145,6 +164,8 @@ export default class App extends PureComponent {
         );
     };
 };
+
+export default App
 
 
 const styles = StyleSheet.create({
@@ -195,7 +216,9 @@ const styles = StyleSheet.create({
       },
     backImg: {
         width: '100%',
-        height: 150,
+        height: 200,
+        opacity: 0.9,
+        justifyContent: 'flex-end'
     },
 })
 
