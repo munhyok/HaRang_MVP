@@ -54,10 +54,12 @@ Language
 
   - 매장 정보에서 운영시간 작성예정
 
+  - TOSS 입금 API 관련 Research 중...
+
   - ScreenShots(매장 정보)
 
     ![](https://ewr1.vultrobjects.com/harscreenshots/210303%20details%201.PNG)
-
+  
     ![](https://ewr1.vultrobjects.com/harscreenshots/210303%20details%202.PNG)
 
 
