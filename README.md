@@ -66,6 +66,14 @@ Language
 
 
 
+- #### **21.03.06 Update Note**
+
+  - 일부 버그 수정
+  - Back-End Json 수정 (FlatList 대응)
+  - FlatList Front-End 작업... ~~(이놈이 제일 문제...)~~
+  - 안드로이드 기기에 이미지 로딩이 안돼는 경우가 있어 async image load 기능 추가 //useNativeDriver 이슈
+  - Image slider npm 패키지 추가해야함
+
 ## Reference
 
 **HaRang_MVP를 만드는데 도움을 준 레퍼런스 자료 모음입니다.**
