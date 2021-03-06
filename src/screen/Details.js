@@ -1,5 +1,5 @@
 import React, { Component, PureComponent }  from 'react';
-import {SafeAreaView, StyleSheet, Text, View, Platform,Image,Button, ActivityIndicator, Animated, Dimensions,ImageBackground} from 'react-native';
+import {SafeAreaView, StyleSheet, Text, View, Platform,Image,Button, ActivityIndicator, Animated, Dimensions,ImageBackground, FlatList} from 'react-native';
 import { setStatusBarBackgroundColor, StatusBar } from 'expo-status-bar';
 import Constants from 'expo-constants';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -39,6 +39,8 @@ class App extends PureComponent {
           imageLoaded: false,
           foodImage: [],
 
+          data:[],
+          list: [],
           animatedValue: null,
 
         };
@@ -82,6 +84,11 @@ class App extends PureComponent {
         }
     }
 
+
+
+    componentDidMount(){
+
+    }
       
 
 
@@ -93,11 +100,19 @@ class App extends PureComponent {
 
 
         const {route, navigation} = this.props;
-        const {titleId, companyName, priceP, foodImage,backImg} = route.params;
+        const {titleId, companyName, priceP, foodImage,backImg, menu, mName} = route.params;
 
 
         console.log(backImg);
         console.log(foodImage);
+        console.log(menu);
+        console.log(mName);
+
+        const renderItem = ({item, index}) => (
+            <View>
+                <Text>{item.menu}</Text>
+            </View>
+        )
 
         return(
 
@@ -114,9 +129,11 @@ class App extends PureComponent {
                             
                             </ImageBackground>
 
-                            <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+                            <View style={{flexDirection: 'row', justifyContent: 'center', paddingTop: 5,}}>
                             <Text style ={{fontWeight: 'bold', fontSize: 30, color: '#303030'}}>{companyName}</Text>
                             </View>
+                            <Text style = {{alignSelf: 'center', fontWeight: '100',paddingBottom: 5}}>Open : 00:00 / Close : 00:00</Text>
+
                         </View>
                         
 
@@ -150,8 +167,10 @@ class App extends PureComponent {
 
                         
                     </View> 
-                    <View style={{alignItems: 'center', justifyContent: 'center',paddingTop: 30}}>
-                            <Text>등록된 음식이 없습니다!</Text>
+                    <View style={{}}>
+                            
+
+                            
                     </View>
 
                 </ScrollView>
@@ -217,7 +236,7 @@ const styles = StyleSheet.create({
     backImg: {
         width: '100%',
         height: 200,
-        opacity: 0.9,
+        //opacity: 0.9,
         justifyContent: 'flex-end'
     },
 })

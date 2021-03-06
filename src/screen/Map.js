@@ -94,13 +94,11 @@ class App extends React.Component {
 
 
       
-      //this.mapMarkers()
+
 
     }
 
-    componentDidUpdate(prevProps){
-      //this.openModal
-    }
+    
 
     handleMapRegionChange = mapRegion => {
       this.setState({ mapRegion });
@@ -164,17 +162,7 @@ class App extends React.Component {
     }
 
 
-    
-    modal = React.createRef();
 
-    openModal = () => {
-        
-       
-            
-            this.modal.current.open();
-
-        
-    }
 
     mapMarkers = (_marker) => {
       return this.state.data.map((_marker, i) => (
@@ -203,6 +191,8 @@ class App extends React.Component {
               priceP: _marker.price,
               foodImage: _marker['img'],
               backImg: _marker['backImg'],
+              menu: _marker.menu,
+              mName: _marker.menu.mName,
             })}
             
             >

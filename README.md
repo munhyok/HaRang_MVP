@@ -98,3 +98,7 @@ https://nolboo.kim/blog/2013/10/06/github-for-beginner/ Gitcmd 사용방법
 
 https://github.com/ZXVentures/react-native-async-image-animated load async image
 
+https://medium.com/@harshita.arun.1/firebase-to-flatlist-react-native-5281718969ab Firebase flatlist
+
+https://snack.expo.io/@adamjnav/firebase-flatlist-example Firebase flatlist example
+
