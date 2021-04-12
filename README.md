@@ -14,6 +14,93 @@ Language
 
 <u>**외부에 유출 시 불이익을 얻을 수 있습니다! 외부 유출을 최대한 조심해주세요!**</u>
 
+**본 프로젝트는 Expo-CLI로 작업했습니다. Node.js 설치 후 Expo-CLI를 설치해서 이용해주세요**
+
+
+
+보안을 위해 Firebase 주소는 지웠으며 추후 따로 Firebase를 이용해 서버를 열고 API-Key, DB 이름 등을 직접 입력해주셔야 작동합니다.
+
+
+
+**혹시 이해 안돼는 부분은 연락주시면 상세하게 설명해드리겠습니다.**
+
+
+
+
+
+## Firebase DB 데이터
+
+JSON 형식 입니다.
+
+
+
+{
+  "markers" : [ null, {
+    "backImg" : "https://www.paris.co.kr/wp-content/uploads/paris_baguette_opengraph_3.jpg",
+    "company" : "파리바게트",
+    "coordinate" : {
+      "latitude" : 37.449642,
+      "longitude" : 127.127142
+    },
+    "description" : "파리바게트 가천대점",
+    "img" : "https://t1.daumcdn.net/cfile/blog/2579853B589A8D8F2B",
+    "index" : 1,
+    "menu" : {
+      "1" : {
+        "id" : 1,
+        "mImg" : "https://ww.namu.la/s/8ca9da263088fa751047c683bd04a5037105ab0ae8b048b3b6ab8a94de24a493cf56cb2638ecd24122fa382856833423c32feeb186012dd989c607df0de056c6960df35049b9459caafed349c8849c42d5e85757954e6846f3f3c92dd4fc36fde6fa2360989baf4cb0dc289b946d7739",
+        "mName" : "크루와상",
+        "mPrice" : "3000원"
+      },
+      "2" : {
+        "id" : 2,
+        "mImg" : "https://ww.namu.la/s/8ca9da263088fa751047c683bd04a5037105ab0ae8b048b3b6ab8a94de24a493cf56cb2638ecd24122fa382856833423c32feeb186012dd989c607df0de056c6960df35049b9459caafed349c8849c42d5e85757954e6846f3f3c92dd4fc36fde6fa2360989baf4cb0dc289b946d7739",
+        "mName" : "크림빵",
+        "mPrice" : "1000원"
+      },
+      
+    },
+    "price" : "3000원",
+    "title" : "크로와상"
+  }, {
+    "backImg" : "http://img.khan.co.kr/news/2019/08/04/2019080501000376100029561.jpg",
+    "company" : "세븐일레븐",
+    "coordinate" : {
+      "latitude" : 37.451299,
+      "longitude" : 127.129404
+    },
+    "description" : "세븐일레븐 가천대점",
+    "img" : "https://www.mpps.co.kr/kfcs_api_img/KFCS/goods/DL_2174223_20200903093553622.PNG",
+    "index" : 2,
+    "menu" : [ null, {
+      "id" : 1,
+      "mName" : "치킨너겟",
+      "mPrice" : "1000원"
+    } ],
+    "price" : "1000원",
+    "title" : "치킨너겟"
+  }, {
+    "backImg" : "https://www.paxetv.com/news/photo/202003/88196_59893_1450.jpg",
+    "company" : "CU",
+    "coordinate" : {
+      "latitude" : 37.448789,
+      "longitude" : 127.1271
+    },
+    "description" : "CU 가천대점",
+    "img" : "https://image.auction.co.kr/itemimage/12/36/f2/1236f20cb6.jpg",
+    "index" : 3,
+    "menu" : [ null, {
+      "id" : 1,
+      "mName" : "코카콜라",
+      "mPrice" : "1000원"
+    } ],
+    "price" : "1000원",
+    "title" : "코카콜라"
+  } ]
+}
+
+
+
 
 
 ## Update Note

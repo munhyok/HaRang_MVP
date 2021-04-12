@@ -2,10 +2,12 @@ import React, { Component, PureComponent }  from 'react';
 import {SafeAreaView, StyleSheet, Text, View, Platform,Image,Button, ActivityIndicator, Animated, Dimensions,ImageBackground, FlatList} from 'react-native';
 import { setStatusBarBackgroundColor, StatusBar } from 'expo-status-bar';
 import Constants from 'expo-constants';
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { rgb } from 'd3';
 import AsyncImageAnimated from 'react-native-async-image-animated';
 
+import * as firebase from 'firebase';
+import "firebase/database";
 
 
 
@@ -22,7 +24,7 @@ function itemSperate (){
     )
 }
 
-
+s
 
 
 
@@ -38,7 +40,9 @@ class App extends PureComponent {
           mapRegion: null,
           imageLoaded: false,
           foodImage: [],
+          menu: [],
 
+          item: [],
           data:[],
           list: [],
           animatedValue: null,
@@ -48,6 +52,9 @@ class App extends PureComponent {
       }
 
 
+
+
+      
       
 
       async imageloadingProcess(uri_image) {
@@ -88,6 +95,7 @@ class App extends PureComponent {
 
     componentDidMount(){
 
+        
     }
       
 
@@ -97,20 +105,20 @@ class App extends PureComponent {
 
     render() {
 
-
-
         const {route, navigation} = this.props;
-        const {titleId, companyName, priceP, foodImage,backImg, menu, mName} = route.params;
+        const {titleId, companyName, priceP, foodImage,backImg, menu, mName, menuKey, mindex} = route.params;
 
 
         console.log(backImg);
         console.log(foodImage);
         console.log(menu);
-        console.log(mName);
+        
+        //console.log(menuKey);
 
-        const renderItem = ({item, index}) => (
+        const renderItem = ({menu,item, index}) => (
             <View>
-                <Text>{item.menu}</Text>
+                
+                <Text>{item.mName}</Text>
             </View>
         )
 
@@ -118,7 +126,7 @@ class App extends PureComponent {
 
             
             <SafeAreaView style={styles.container}>
-                <ScrollView>
+                <View>
                     <View style = {{flexDirection: 'column',  justifyContent: 'space-between' }}>
                         <View >
                             <ImageBackground style={styles.backImg}
@@ -141,24 +149,18 @@ class App extends PureComponent {
                     </View>
 
                     {itemSperate()}
-
-                   
-
-
-                   
-                        <View >
-
-                            
-                        
-                        
-                
-
-                        </View>
-                        
-                        
-                        
-                        
                     
+                   
+
+                    <View>
+
+                        
+                        
+                        
+                        
+                        
+                        
+                    </View>
 
                     {itemSperate()}
 
@@ -166,16 +168,42 @@ class App extends PureComponent {
                         <Text style = {{fontSize: 30, fontWeight: '200'}}>Menu</Text>
 
                         
+                        <FlatList style={{height: '90%'}}
+                            key = {this.state.item.id}
+                            keyExtractor={item => item.id}
+                            data={Object.keys(menu)}
+                            renderItem={({item}) => 
+                                
+                                <View>
+                                    
+                                    
+                                    <Image style={styles.backImg}
+                                        uri = {menu[item].mImg}
+                                    >
+
+                                        
+                                    </Image>
+                                    <Text>{menu[item].mName}</Text>
+                                    <Text>{menu[item].mPrice}</Text>
+                                    
+                                </View> 
+                                
+                                
+                            }
+                            
+                        />
                     </View> 
-                    <View style={{}}>
-                            
+                    
+                    
+                    
+                   
+                    
 
-                            
-                    </View>
-
-                </ScrollView>
+                </View>
                 
                 
+                
+
                 <StatusBar style="auto" />
                 
             </SafeAreaView>

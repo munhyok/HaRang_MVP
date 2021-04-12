@@ -18,10 +18,9 @@ import { Dimensions, StyleSheet, Text, View, PermissionsAndroid, Platform, Alert
 import react from 'react';
 import { TextInput, TouchableOpacity, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
-import {locations} from '../model/markersdata';
+import {locations} from '../model/markersdata'; //로컬 마커 데이터 정보입니다. :D 로컬로 테스팅을 하고 싶으시면 이걸 사용해주세요 :D
 import { version } from 'react';
 import { LocationSubscriber } from 'expo-location/build/LocationSubscribers';
-import {MyModal} from '../module/wraping';
 
 import AsyncImageAnimated from 'react-native-async-image-animated';
 
@@ -74,14 +73,14 @@ class App extends React.Component {
       //this.index = 1;
 
       firebase.initializeApp({
-        apiKey: "AIzaSyCeFmNbJoDf9EiTC9AOZlnm7QtYOiq42_A",
-        authDomain: "harang-database.firebaseapp.com",
-        databaseURL: "https://harang-database-default-rtdb.firebaseio.com",
-        projectId: "harang-database",
-        storageBucket: "harang-database.appspot.com",
-        messagingSenderId: "313757664028",
-        appId: "1:313757664028:web:a69be06e647d723ce8f0d9",
-        measurementId: "G-5TEJ0BXZ51"
+        apiKey: "API 키 ",
+        authDomain: "harang authdomain",
+        databaseURL: "firebase database url",
+        projectId: "project id",
+        storageBucket: "appspot...",
+        messagingSenderId: "11111111",
+        appId: "앱 아이디 입력",
+        measurementId: "measurement id"
       });
       
       const ref = firebase.database().ref('markers');
@@ -192,7 +191,9 @@ class App extends React.Component {
               foodImage: _marker['img'],
               backImg: _marker['backImg'],
               menu: _marker.menu,
+              menuKey: _marker.menu.key,
               mName: _marker.menu.mName,
+              mindex: _marker.index
             })}
             
             >
@@ -237,51 +238,7 @@ class App extends React.Component {
     }
     
 
-    modalScreen = () => {
-      return locations.markers.map((_marker,index) => (
-
-
-        
-        <Modalize
-        
-          ref={this.modal}
-          snapPoint={200}
-          modalTopOffset={100}
-          overlayStyle={{
-            backgroundColor: 'transparent'
-          }}
-
-          
-
-          handlePosition = {1}
-          
-        
-        >
-
-
-            
-            
-            <View >
-              <View style = {styles.bubble} >
-                <Text style = {styles.name}> {_marker.title}</Text>
-                {<Text style = {styles.company}> {_marker.company} </Text> }
-                <Text style = {styles.price}>{_marker.price}</Text>
-                <Image style={styles.image}
-                  source={{uri: _marker['img'] }}
-                />
-              </View>
-              <View style={styles.arrowBorder} />
-              <View style={styles.arrow} />
-            </View>
-            
-      
-          
-          
-
-        </Modalize>
-      ))
-
-    }
+    
 
     
     
